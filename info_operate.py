@@ -16,7 +16,7 @@ class InfoOperate():
 				self.detail_ind = 0
 				self.img_ind = 0
 				obj.close()
-			self.save_last_ind({'page':2,'detail':0,'img':0})
+			self.save_last_ind()
 		else:
 			self.fail_ind = self.get_fail_ind()
 			self.last_ind = self.get_last_ind()
@@ -39,20 +39,21 @@ class InfoOperate():
 		with open("info_save.json") as obj:
 			info_save = json.load(obj)
 		return info_save
-		
-	def save_last_ind(self, para):
+	
+	def save_last_ind(self):
 		with open('info_save.json','r') as obj_r:
 			info_save = json.load(obj_r)
 			last_ind = info_save['last_ind']
 			obj_r.close()
+		last_ind = {}
 		with open('info_save.json', 'w') as obj:
-			 for key, value in para.items():
-			 	last_ind[key] = value
-			 self.last_ind = last_ind
+			 last_ind['page'] = self.page_ind
+			 last_ind['detail'] = self.detail_ind
+			 last_ind['img'] = self.img_ind
 			 info_save['last_ind'] = last_ind
 			 json.dump(info_save, obj)
 			 obj.close()
-		self.get_every_ind()
+		#self.get_every_ind()
 	
 	def save_fail_ind(self, now_info):
 		ind_page = str(now_info[0])

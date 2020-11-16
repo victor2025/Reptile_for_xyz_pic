@@ -15,20 +15,23 @@ import info_operate
 
 def main():
 	info_main = info_operate.InfoOperate()
+	print('从存档点继续保存...')
 	base_url="https://www.905xyz.xyz"
 	re_setting = ReSetting()
     #1.爬取网页
 	page = info_main.page_ind
 	while True:
 		data_list = getData(base_url,re_setting,info_main)
-		page=page+1
-		last_ind = {'page':page,'detail':0,'img':0}
-		info_main.save_last_ind(last_ind)
 		save_path = r"Result_xyz_pic_%d.xls"%page
     # db_path = "movie.db"
     #3.保存数据
 		saveData(data_list,save_path)
     #saveData_DB(data_list,db_path)
+		page=page+1
+		info_main.page_ind = page
+		info_main.detail_ind = 0
+		info_main.img_ind = 0
+		info_main.save_last_ind()
 
 #爬取网页,逐一解析数据
 def getData(base_url,re_setting,info_main):

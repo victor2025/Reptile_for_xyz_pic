@@ -43,9 +43,13 @@ def major_detail_get(data_list, re_setting, info_main):
 		# 保存此次文件
 		img_save.img_save_2(temp_data, info_main)
 		#储存程序状态
-		info_main.save_last_ind({'detail':detail_ind})
-		
+		info_main.img_ind = 0
+		info_main.detail_ind = detail_ind+1
+		info_main.save_last_ind()
 		pic_list.append(temp_data)
+	#detail_ind = 0
+	#info_main.detail_ind = detail_ind
+	#info_main.save_last_ind()
 	return  pic_list
 
 def soup_link(link):

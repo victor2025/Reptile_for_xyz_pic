@@ -32,7 +32,9 @@ def img_save(data_list,info_main):
 	        pos_now = {'detail':ind_detail,'img':ind_img}
 	        info_main.save_last_ind(pos_now)
         img_begin = 0
+        info_main.save_last_ind({'img':img_begin})
     detail_begin = 0
+    info_main.save_last_ind({'detail':detail_begin})
         
 def img_save_2(pic_list,info_main):
     # 存档还原
@@ -55,10 +57,8 @@ def img_save_2(pic_list,info_main):
 	    now_info = [page_now, ind_detail, ind_img]
 	    down_from_url(temp_link,img_name, 45, 1, now_info, info_main)
 	        #储存当前程序进行位置
-	    pos_now = {'detail':ind_detail,'img':ind_img}
-	    info_main.save_last_ind(pos_now)
-    img_begin = 0
-detail_begin = 0
+	    info_main.img_ind = ind_img+1
+	    info_main.save_last_ind()
 
 def make_dir(path):
 	if not os.path.exists(path):
