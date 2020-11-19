@@ -1,3 +1,4 @@
+#pylint:disable=C0301
 # -*- coding: utf-8 -*-
 # @Time    : 2020/10/30 17:39
 # @Author  : VICTOR2022
@@ -7,6 +8,8 @@
 from urllib.request import urlretrieve
 import os
 import socket
+from multi_thread_download_3 import download_mt
+from multiprocessing import Process
 
 def img_save(data_list,info_main):
     # 存档还原
@@ -65,12 +68,17 @@ def make_dir(path):
 		os.makedirs(path)
 		
 def down_from_url(url, img_name, retry_time, retry_count, now_info, info_main):
+	page_now = info_main.page_ind
+	detail_now = info_main.detail_ind
+	img_now = info_main.img_ind
 	socket.setdefaulttimeout(retry_time)
 	flag = False
 	while retry_count<=5:
 		try:
 			try:
-				urlretrieve(url , img_name)
+				p=Process(target=download_mt, args=(url, img_name, 20, '%d_%d_%d'%(page_now,detail_now,img_now)))
+				p.start()
+				#urlretrieve(url , img_name)
 				break
 			except Exception as e:
 				flag = True

@@ -16,7 +16,7 @@ import info_operate
 def main():
 	info_main = info_operate.InfoOperate()
 	print('从存档点继续保存...')
-	base_url="https://www.905xyz.xyz"
+	base_url="https://www.483xyz.xyz"
 	re_setting = ReSetting()
     #1.爬取网页
 	page = info_main.page_ind

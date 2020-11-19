@@ -21,7 +21,7 @@ def major_data_get(base_url,re_setting, info_main):
 	    data = get_functions.get_pic_site(item,re_setting)
 	    data[0] = base_url+data[0]
 	    #data.insert(0,type_title)
-	    print(data)
+	    #print(data)
 	    #temp_data_list.append(data)
 	    data_list.append(data)
     #print(data_list)	
