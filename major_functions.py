@@ -54,7 +54,7 @@ def major_detail_get(data_list, re_setting, info_main):
 
 def soup_link(link):
 	temp_html = ask_URL(link)
-	save_html(temp_html,'temp_html.html')
+	#save_html(temp_html,'temp_html.html')
 	soup = bs(temp_html,"html.parser")
 	return soup
 	

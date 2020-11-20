@@ -22,7 +22,7 @@ def main():
 	page = info_main.page_ind
 	while True:
 		data_list = getData(base_url,re_setting,info_main)
-		save_path = r"Result_xyz_pic_%d.xls"%page
+		save_path = r"F:\backup\Python reptile result backup\xyz_result\xyz_2\xls_save\Result_xyz_pic_%d.xls"%page
     # db_path = "movie.db"
     #3.保存数据
 		saveData(data_list,save_path)

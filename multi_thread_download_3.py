@@ -5,8 +5,8 @@ from urllib.request import *
 import requests
 from threading import Thread,enumerate
 
-def download_mt(url_present, save_path_present, thread_num_max, title):
-	global finished_num, finished_size,live_thread_num
+def download_mt(url_present, save_path_present, title):
+	global finished_num, live_thread_num, finished_size
 	live_thread_num = 0
 	
 	url = url_present
@@ -44,8 +44,9 @@ def download_mt(url_present, save_path_present, thread_num_max, title):
 		global finished_num,finished_size
 		finished_num+=1
 		finished_size += download_size 
-		print('当前%s已完成：%.2f'%(title,finished_size/file_size*100)+'%')
+		#print('当前%s已完成：%.2f'%(title,finished_size/file_size*100)+'%')
 		#show_process(finished_size,file_size,title)
+		print('当前%s已完成：Thread-%d'%(title,_id))
 		
 	#初始化文件
 	file_pre = open(save_path,'wb')
